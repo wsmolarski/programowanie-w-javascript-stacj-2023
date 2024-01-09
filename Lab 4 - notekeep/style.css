@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 body{
-    background: aliceblue;
+    background: #333;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,17 +22,17 @@ div#app{
 form#noteForm{
     margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
 form#noteForm label{
     display: block;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 500;
 }
 form#noteForm input,
 form#noteForm textarea{
-    width: 100%;
+    width: calc(100% - 10px);
     border: 1px solid #d88f30;
     padding: 5px 10px;
     border-radius: 5px;
@@ -40,7 +40,10 @@ form#noteForm textarea{
     outline-color: #ddd
 }
 form#noteForm input#color{
-    width: 15%;
+    width: calc(30% - 10px);
+}
+form#noteForm input#pin{
+    width: calc(10% - 10px);
 }
 form#noteForm button{
     border: none;
