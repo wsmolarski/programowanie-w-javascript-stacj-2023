@@ -21,6 +21,7 @@ div#app{
 }
 form#noteForm{
     margin-top: 20px;
+    margin-bottom: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -53,5 +54,31 @@ form#noteForm button{
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     background-color: #d88f30;
+    transition: filter 0.3s;
+}
+.note{
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    position: relative;
+}
+.noteTitle{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.noteOptions{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.deleteBtn{
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    background-color: #c51111;
     transition: filter 0.3s;
 }

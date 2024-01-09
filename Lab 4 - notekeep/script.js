@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function addNote() {
     const title = document.getElementById('title').value
     const content = document.getElementById('content').value
-    const color = document.getElementById('content').value
+    const color = document.getElementById('color').value
     const pin = document.getElementById('pin').checked
     const date = new Date().toLocaleString()
 
@@ -61,6 +61,7 @@ function loadNotes() {
         optionsDiv.className = 'noteOptions'
 
         const deleteButton = document.createElement('button')
+        deleteButton.className = 'deleteBtn'
         deleteButton.innerText = 'Delete'
         deleteButton.onclick = () => deleteNote(index)
 
