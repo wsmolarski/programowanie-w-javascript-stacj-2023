@@ -52,7 +52,7 @@ function loadNotes() {
 
         const titleDiv = document.createElement('div')
         titleDiv.className = 'noteTitle'
-        titleDiv.innerText = note.title
+        titleDiv.innerText = `${note.title} - ${note.date}`
 
         const contentDiv = document.createElement('div')
         contentDiv.innerText = note.content
