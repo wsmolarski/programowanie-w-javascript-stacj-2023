@@ -23,5 +23,17 @@
         </form>
         <div id="notesList"></div>
     </div>
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Note</h2>
+            <input type="text" id="editTitle" placeholder="Enter new title">
+            <textarea id="editContent" placeholder="Enter new content"></textarea>
+            <input type="color" id="editColor" value="#ffffff">
+            <label for="editPin">Pin Note:</label>
+            <input type="checkbox" id="editPin">
+            <button id="saveEditBtn">Save</button>
+        </div>
+    </div>
 </body>
 </html>

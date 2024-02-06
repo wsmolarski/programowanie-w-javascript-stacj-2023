@@ -39,6 +39,46 @@ function deleteNote(index) {
     loadNotes()
 }
 
+function editNote(index) {
+    let notes = JSON.parse(localStorage.getItem('notes')) || []
+    const noteToEdit = notes[index]
+
+    document.getElementById('editTitle').value = noteToEdit.title
+    document.getElementById('editContent').value = noteToEdit.content
+    document.getElementById('editColor').value = noteToEdit.color
+    document.getElementById('editPin').checked = noteToEdit.pin
+
+    document.getElementById('editModal').style.display = 'block'
+
+    document.getElementById('saveEditBtn').addEventListener('click', function() {
+
+        const editedTitle = document.getElementById('editTitle').value
+        const editedContent = document.getElementById('editContent').value
+        const editedColor = document.getElementById('editColor').value
+        const editedPin = document.getElementById('editPin').checked
+
+        noteToEdit.title = editedTitle
+        noteToEdit.content = editedContent
+        noteToEdit.color = editedColor
+        noteToEdit.pin = editedPin
+
+        if (editedPin) {
+            notes.splice(index, 1)
+            notes.unshift(noteToEdit)
+        }
+
+        localStorage.setItem('notes', JSON.stringify(notes))
+
+        loadNotes()
+
+        document.getElementById('editModal').style.display = 'none'
+    })
+
+    document.getElementsByClassName('close')[0].addEventListener('click', function() {
+        document.getElementById('editModal').style.display = 'none'
+    })
+}
+
 function loadNotes() {
     const notesList = document.getElementById('notesList')
     notesList.innerHTML = ''
@@ -65,7 +105,13 @@ function loadNotes() {
         deleteButton.innerText = 'Delete'
         deleteButton.onclick = () => deleteNote(index)
 
+        const editButton = document.createElement('button')
+        editButton.className = 'editBtn'
+        editButton.innerText = 'Edit'
+        editButton.onclick = () => editNote(index)
+
         optionsDiv.appendChild(deleteButton)
+        optionsDiv.appendChild(editButton)
 
         noteDiv.appendChild(titleDiv)
         noteDiv.appendChild(contentDiv)
