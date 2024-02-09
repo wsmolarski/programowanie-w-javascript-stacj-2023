@@ -1,10 +1,33 @@
-body{
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    background-color: #f0f0f0;
 }
-canvas{
-    border: 1px solid black;
+canvas {
+    border: 2px solid #333;
+}
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+button:focus {
+    outline: none;
+}
+div {
+    text-align: center;
+    margin-bottom: 20px;
 }

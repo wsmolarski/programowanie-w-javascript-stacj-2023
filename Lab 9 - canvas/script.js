@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function createBall() {
         return {
             radius: 5,
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
+            x: Math.random() * (canvas.width - 50) + 10,
+            y: Math.random() * (canvas.height - 50) + 10,
             speedX: (Math.random() - 0.5) * 4,
             speedY: (Math.random() - 0.5) * 4,
             draw: function() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'blue';
+                ctx.fillStyle = '#2E8B57';
                 ctx.fill();
                 ctx.closePath();
             },
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.beginPath();
             ctx.moveTo(ball1.x, ball1.y);
             ctx.lineTo(ball2.x, ball2.y);
-            ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+            ctx.strokeStyle = '#00FF7F';
             ctx.stroke();
         }
     }
