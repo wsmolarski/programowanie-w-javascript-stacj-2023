@@ -5,33 +5,19 @@
     overflow: hidden;
     position: relative;
 }
-
-#slider .slides {
+.slides {
     display: flex;
-    transition: transform 3s ease;
+    transition: transform 2s ease;
 }
-
-#left, #right {
-    height: 400px;
-    width: 17px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.3);
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: width 1s ease, background 1s ease;
+#navigation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
-
-#right {
-    right: 0;
+#navigation > div {
+    display: flex;
+    align-items: center;
 }
-
-#dots {
-    text-align: center;
-}
-
 .dot {
     border: none;
     height: 10px;
@@ -39,14 +25,24 @@
     border-radius: 50%;
     background-color: gray;
     cursor: pointer;
+    margin: 0 5px;
 }
-
+#arrows {
+    margin-left: 10px;
+}
+#left, #right {
+    height: 40px;
+    width: 17px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+}
 #left:hover, #right:hover {
-    width: 30px;
     background: rgba(0, 0, 0, 0.5);
-    transition: all 1s ease;
-}
 
+}
 .slide > * {
     width: 600px;
     text-align: center;
