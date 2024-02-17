@@ -16,55 +16,65 @@ const channels = {
     1: [],
     2: [],
     3: [],
-    4: [],
+    4: []
 }
 
 let currentChannel = 1
 
-const savedChannels = JSON.parse(sessionStorage.getItem("channels"))
-
+const savedChannels = JSON.parse(sessionStorage.getItem('channels'))
 if (savedChannels) {
-    Object.keys(savedChannels).forEach(channel=>{
-        channels[channel]=savedChannels[channel]
+    Object.keys(savedChannels).forEach(channel => {
+        channels[channel] = savedChannels[channel]
     })
 }
 
 function onKeyPress(event) {
-    const pressedKey = event.key.toLowerCase()
-    const sound = KeyToSound[pressedKey]
+    const key = event.key.toLowerCase()
+    const sound = KeyToSound[key]
     if (sound) {
         playSound(sound)
-        recordSound(pressedKey, sound.src)
-    } else if(pressedKey == "r") {
+        recordSound(key, sound.src)
+    } else if (key === 'r') {
         currentChannel = (currentChannel % 4) + 1
-    } else if(pressedKey == "p") {
+        console.log(`Aktualny kanał: ${currentChannel}`)
+    } else if (key === 'p') {
         playRecordedSounds(currentChannel)
-    } else if (pressedKey == "o") {
+    } else if (key === 'o') {
         playRecordedSoundsAll()
     }
 }
+
 function playSound(sound) {
     sound.currentTime = 0
     sound.play()
 }
 
 function recordSound(key, soundSrc) {
-    channels[currentChannel].push({key, soundSrc})
+    const currentTime = Date.now()
+    channels[currentChannel].push({ key, soundSrc, timestamp: currentTime })
     saveChannelsToSessionStorage()
+    console.log(currentTime)
 }
 
 function saveChannelsToSessionStorage() {
     sessionStorage.setItem(channels, JSON.stringify(channels))
 }
 
-function playRecordedSounds(channel) {
-    channels[channel].forEach(({soundSrc}, index) => {setTimeout(()=>{
-        const sound = new Audio(soundSrc)
-        playSound(sound)
-        },100 * index)
-    })
+function playRecordedSounds(channel, index = 0) {
+    if (index < channels[channel].length) {
+        const { soundSrc, timestamp } = channels[channel][index]
+
+        setTimeout(() => {
+            const sound = new Audio(soundSrc)
+            playSound(sound)
+
+            playRecordedSounds(channel, index + 1)
+        }, index === 0 ? 0 : timestamp - channels[channel][index - 1].timestamp)
+    }
 }
 
 function playRecordedSoundsAll() {
-    Object.keys(channels).forEach(channel=>{playRecordedSounds(parseInt(channel))})
+    Object.keys(channels).forEach(channel => {
+        playRecordedSounds(parseInt(channel))
+    })
 }
