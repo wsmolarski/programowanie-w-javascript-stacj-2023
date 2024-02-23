@@ -1,6 +1,5 @@
 // notatnik z zajęć
 
-const main = document.querySelector('main')
 const slides = document.querySelector('.slides')
 const dot = document.querySelector('#dot1')
 dot.style.backgroundColor = "black"
@@ -53,11 +52,13 @@ slides.addEventListener("click", ()=> {
     if (run){
         clearInterval(intervalRef)
         run = false
+        console.log("stop");
     } else {
         intervalRef = setInterval(()=> {
             slide()
         },5000 )
         run = true
+        console.log("start");
     }
 })
 

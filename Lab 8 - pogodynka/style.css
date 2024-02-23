@@ -1,4 +1,4 @@
-body {
+body{
     font-family: 'Arial', sans-serif;
     background-color: #f0f0f0;
     margin: 0;
@@ -6,69 +6,64 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
 }
-
-#app {
+#app{
     text-align: center;
 }
-
-#search {
+#search{
     margin-bottom: 20px;
 }
-
-input {
+label{
+    font-weight: bold;
+}
+input{
     padding: 10px;
     font-size: 16px;
     margin-right: 10px;
 }
-
-button {
+button{
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #3498db;
+    background-color: #e74c3c;
     color: #fff;
     border: none;
     cursor: pointer;
     border-radius: 5px;
 }
-
-button:hover {
-    background-color: #2980b9;
+button:hover{
+    background-color: #c0392b;
 }
 
-#citiesList {
+#cities-list{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-
-.cityCard {
+.city{
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 10px;
+    text-align: left;
 }
-
-.cityName {
+.city h2{
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-
-.temperature {
-    font-size: 24px;
-    color: #3498db;
+.weather-icon{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
 }
-
-.weatherDescription {
+.city p{
     font-size: 16px;
-    margin-top: 10px;
+    margin: 5px 0;
 }
-
-.removeCity {
-    background-color: #e74c3c;
+#add-city-button{
+    background-color: #3498db;
     color: #fff;
     border: none;
     padding: 5px 10px;
@@ -76,7 +71,6 @@ button:hover {
     cursor: pointer;
     border-radius: 5px;
 }
-
-.removeCity:hover {
-    background-color: #c0392b;
+#add-city-button:hover{
+    background-color: #2980b9;
 }

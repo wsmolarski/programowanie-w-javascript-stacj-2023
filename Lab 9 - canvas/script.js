@@ -6,15 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
   
     function createBall() {
         return {
-            radius: 5,
+            radius: 12,
             x: Math.random() * (canvas.width - 50) + 10,
             y: Math.random() * (canvas.height - 50) + 10,
-            speedX: (Math.random() - 0.5) * 4,
-            speedY: (Math.random() - 0.5) * 4,
+            speedX: (Math.random() - 0.5) * 8,
+            speedY: (Math.random() - 0.5) * 8,
             draw: function() {
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+                gradient.addColorStop(0, '#FFFFFF');
+                gradient.addColorStop(1, '#2E8B57');
+
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#2E8B57';
+                ctx.fillStyle = gradient;
                 ctx.fill();
                 ctx.closePath();
             },
@@ -45,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.beginPath();
             ctx.moveTo(ball1.x, ball1.y);
             ctx.lineTo(ball2.x, ball2.y);
-            ctx.strokeStyle = '#00FF7F';
+            ctx.strokeStyle = '#45a049';
             ctx.stroke();
         }
     }
