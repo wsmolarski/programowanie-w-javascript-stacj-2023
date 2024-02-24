@@ -1,25 +1,34 @@
-const liczba1 = document.getElementById('liczba1');
-const liczba2 = document.getElementById('liczba2');
-const liczba3 = document.getElementById('liczba3');
-const liczba4 = document.getElementById('liczba4');
-const przeliczBtn = document.getElementById('przelicz');
-const wyniki = document.getElementById('wyniki');
+const liczba1Input = document.getElementById("liczba1");
+const liczba2Input = document.getElementById("liczba2");
+const liczba3Input = document.getElementById("liczba3");
+const liczba4Input = document.getElementById("liczba4");
+const obliczBtn = document.getElementById("oblicz");
+const WynikiDiv = document.getElementById("wyniki");
 
-przeliczBtn.addEventListener('click', () => {
-  const value1 = parseFloat(liczba1.value);
-  const value2 = parseFloat(liczba2.value);
-  const value3 = parseFloat(liczba3.value);
-  const value4 = parseFloat(liczba4.value);
+function obliczWyniki() {
+  const num1 = parseFloat(liczba1Input.value);
+  const num2 = parseFloat(liczba2Input.value);
+  const num3 = parseFloat(liczba3Input.value);
+  const num4 = parseFloat(liczba4Input.value);
 
-  const suma = value1 + value2 + value3 + value4;
-  const srednia = suma / 4;
-  const minValue = Math.min(value1, value2, value3, value4);
-  const maxValue = Math.max(value1, value2, value3, value4);
+  suma = num1 + num2 + num3 + num4;
+  srednia = suma / 4;
+  minWartosc = Math.min(num1, num2, num3, num4);
+  maksWartosc = Math.max(num1, num2, num3, num4);
 
-  wyniki.innerHTML = `
+  WynikiDiv.innerHTML = `
     Suma: ${suma} <br>
     Średnia: ${srednia} <br>
-    Min: ${minValue} <br>
-    Max: ${maxValue}
-  `;
+    Wartość Minimalna: ${minWartosc} <br>
+    Wartość Maksymalna: ${maksWartosc}
+  `
+};
+
+obliczBtn.addEventListener("click", () => {
+  obliczWyniki();
 });
+
+liczba1Input.addEventListener("input", obliczWyniki);
+liczba2Input.addEventListener("input", obliczWyniki);
+liczba3Input.addEventListener("input", obliczWyniki);
+liczba4Input.addEventListener("input", obliczWyniki);
