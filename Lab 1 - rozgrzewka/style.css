@@ -1,0 +1,10 @@
+#input-container input[type='text'] {
+    margin: 4px 4px 4px 0;
+}
+#wyniki{
+    margin-top: 12px;
+}
+button{
+    border-radius: 10%;
+    margin-top: 8px;
+}
